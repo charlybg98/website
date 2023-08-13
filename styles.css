@@ -1,115 +1,37 @@
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ... Variables de Colores y Reset Básico ... */
 
-body {
-    font-family: 'Poppins', sans-serif;
-    /* Una tipografía moderna */
-    background-color: #f7f9fc;
-    color: #333;
-    line-height: 1.6;
-}
-
-header {
-    background: linear-gradient(to right, #6C5B7B, #C06C84);
-    /* Gradiente moderno */
-    color: #fff;
-    text-align: center;
-    padding: 2rem 0;
-    position: relative;
-}
-
-.language-switch {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.language-switch button {
-    background: none;
-    border: none;
-    color: #fff;
-    margin-left: 10px;
-    cursor: pointer;
-    transition: opacity 0.3s;
-}
-
-.language-switch button:hover {
-    opacity: 0.7;
-}
-
-section {
-    padding: 40px 0;
-}
-
-.intro,
-.education-experience,
-.skills,
-.contact {
-    background-color: #fff;
-    margin: 20px auto;
-    padding: 40px;
-    width: 80%;
-    border-radius: 10px;
-    /* Bordes redondeados */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    /* Sombra suave */
-    transition: transform 0.3s;
-    /* Transición suave al hacer hover */
-}
-
-.intro:hover,
-.education-experience:hover,
-.skills:hover,
-.contact:hover {
-    transform: translateY(-10px);
-}
-
-.intro img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
-
-.skills ul {
-    list-style-type: none;
+.container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
 }
 
-.skills li {
-    background-color: #e9e9e9;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.9rem;
+.sticky-section {
+    flex: 1;
+    min-width: 300px;
+    /* Ajusta según prefieras */
+    background-color: var(--primary-dark);
+    color: #fff;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
 }
 
-.contact a {
-    color: #333;
+.scrollable-section {
+    flex: 2;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.links a {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--primary-light);
     text-decoration: none;
-    border: 1px solid #333;
-    padding: 10px 20px;
-    border-radius: 50px;
-    /* Bordes muy redondeados para los botones */
-    display: inline-block;
-    margin-right: 10px;
-    transition: background-color 0.3s, color 0.3s;
-    /* Transición suave al hacer hover */
 }
 
-.contact a:hover {
-    background-color: #333;
-    color: #fff;
+.links a:hover {
+    text-decoration: underline;
 }
 
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background: linear-gradient(to right, #6C5B7B, #C06C84);
-    color: #fff;
-}
+/* ... Resto del CSS ... */
