@@ -163,3 +163,74 @@ p {
     color: #081F37;
     /* Color de texto */
 }
+
+/* Media Queries para Responsividad */
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media only screen and (max-width: 768px) {
+    .sticky-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .left-section,
+    .right-section {
+        width: 100%;
+    }
+
+    .left-section {
+        order: 2;
+    }
+
+    .right-section {
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .project {
+        flex-direction: column;
+    }
+
+    .project-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .main-content {
+        margin-top: 50%;
+    }
+}
+
+/* Estilos para pantallas medianas (tablets) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .sticky-header {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .left-section,
+    .right-section {
+        width: 50%;
+    }
+
+    .left-section {
+        order: 1;
+    }
+
+    .right-section {
+        padding-left: 5%;
+    }
+
+    .project {
+        flex-direction: row;
+    }
+
+    .project-image {
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+
+    .main-content {
+        margin-top: 25%;
+    }
+}
