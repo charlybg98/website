@@ -1,0 +1,11 @@
+main {
+    padding-left: 106px;
+
+    >section {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+}
