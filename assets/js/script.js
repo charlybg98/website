@@ -15,7 +15,7 @@ document.querySelector('#sidebar .toggle-sidebar').addEventListener('click', fun
 })
 
 var options = {
-    strings: ['Data Scientist', 'Machine Learning Enthusiast'],
+    strings: ['Data Scientist', 'Machine Learning Enthusiast', 'AI Developer'],
     loop: true,
     typeSpeed: 80,
     backSpeed: 10
