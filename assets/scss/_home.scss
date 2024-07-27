@@ -99,7 +99,7 @@
             transition: all 0.3s;
 
             &:hover {
-                filter: saturate(200%) grayscale(90%);
+                filter: saturate(200%) sepia(50%);
             }
         }
 
