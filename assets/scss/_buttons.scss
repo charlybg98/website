@@ -1,7 +1,7 @@
 .btn-custom-blue {
     display: inline-block;
     position: relative;
-    background: darken($primary, 40%);
+    background: darken($primary, 20%);
     padding: 10px 52px;
     text-decoration: none;
     color: $primary;
@@ -32,4 +32,9 @@
             transform: translate(-50%, -50%) scale(2);
         }
     }
+}
+
+.btn-custom-dark {
+    @extend .btn-custom-blue;
+    background: darken($primary, 20%);
 }
