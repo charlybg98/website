@@ -17,7 +17,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   margin: 0;
   padding: 0;
 }
@@ -75,20 +76,42 @@ main > section.active {
 }
 main > section header.has-bg {
   position: relative;
+  display: inline-flex;
 }
 main > section header.has-bg img {
   position: absolute;
   top: 15px;
   left: -72px;
 }
+main > section header.custom {
+  position: relative;
+  text-align: center;
+  margin-bottom: 42px;
+}
+main > section header.custom:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #19647E;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+main > section header.custom h2 {
+  display: inline-block;
+  padding: 0 24px;
+  background: #1B1725;
+}
 
 .btn-custom-blue, .btn-custom-dark {
   display: inline-block;
   position: relative;
-  background: #082029;
+  background: #a7442e;
   padding: 10px 52px;
   text-decoration: none;
-  color: #19647E;
+  color: #D57A66;
   border-radius: 8px;
   z-index: 1;
   overflow: hidden;
@@ -99,7 +122,7 @@ main > section header.has-bg img {
   position: absolute;
   height: 100px;
   width: 100px;
-  background: #19647E;
+  background: #D57A66;
   opacity: 0.3;
   border-radius: 50%;
   top: 50%;
@@ -116,7 +139,7 @@ main > section header.has-bg img {
 }
 
 .btn-custom-dark {
-  background: #082029;
+  background: #a7442e;
 }
 
 #sidebar {
@@ -133,7 +156,7 @@ main > section header.has-bg img {
   font-size: 30px;
   width: 45px;
   height: 45px;
-  background: #7f3423;
+  background: black;
   display: none;
   justify-content: center;
   align-items: center;
@@ -175,7 +198,7 @@ main > section header.has-bg img {
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  background: #19647E;
+  background: #D57A66;
   opacity: 0;
   top: 50%;
   left: 50%;
@@ -187,7 +210,7 @@ main > section header.has-bg img {
   transform: translate(-50%, -50%) scale(1);
 }
 #sidebar nav ul li a.active i {
-  color: #19647E;
+  color: #D57A66;
 }
 #sidebar nav ul li a span {
   display: none;
@@ -203,7 +226,7 @@ main > section header.has-bg img {
   top: -8px;
   left: 20px;
   padding: 7px 13px;
-  background: rgba(213, 122, 102, 0.75);
+  background: rgba(25, 100, 126, 0.75);
   border-radius: 6px;
   opacity: 0;
   transition: all 0.3s;
@@ -217,13 +240,13 @@ main > section header.has-bg img {
 #sidebar .toggle-mode .outer {
   width: 28px;
   height: 35px;
-  background: #D57A66;
+  background: #19647E;
   border-radius: 24px;
 }
 #sidebar .toggle-mode .outer .inner {
   width: 16px;
   height: 14px;
-  background: #19647E;
+  background: #D57A66;
   border-radius: 50%;
   margin-right: auto;
   margin-left: auto;
@@ -285,7 +308,7 @@ main > section header.has-bg img {
   transition: all 0.3s;
 }
 #home .info .socials ul li a:hover {
-  background: #D57A66;
+  background: #19647E;
   border-radius: 6px;
 }
 #home .info .socials ul li a:hover span,
@@ -331,10 +354,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 44vh;
-  left: 14vw;
-  animation: meteor 3239ms linear infinite;
-  animation-delay: 674ms;
+  top: 59vh;
+  left: 2vw;
+  animation: meteor 5689ms linear infinite;
+  animation-delay: 2486ms;
 }
 #home .meteor-shower .meteor:nth-child(2) {
   position: absolute;
@@ -342,10 +365,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 27vh;
-  left: 38vw;
-  animation: meteor 5323ms linear infinite;
-  animation-delay: 2526ms;
+  top: 12vh;
+  left: 44vw;
+  animation: meteor 4711ms linear infinite;
+  animation-delay: 412ms;
 }
 #home .meteor-shower .meteor:nth-child(3) {
   position: absolute;
@@ -353,10 +376,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 100vh;
-  left: 23vw;
-  animation: meteor 5471ms linear infinite;
-  animation-delay: 4567ms;
+  top: 35vh;
+  left: 5vw;
+  animation: meteor 3038ms linear infinite;
+  animation-delay: 1765ms;
 }
 #home .meteor-shower .meteor:nth-child(4) {
   position: absolute;
@@ -364,10 +387,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 16vh;
-  left: 93vw;
-  animation: meteor 7679ms linear infinite;
-  animation-delay: 3216ms;
+  top: 31vh;
+  left: 20vw;
+  animation: meteor 5421ms linear infinite;
+  animation-delay: 4191ms;
 }
 #home .meteor-shower .meteor:nth-child(5) {
   position: absolute;
@@ -375,10 +398,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 1vh;
-  left: 34vw;
-  animation: meteor 5973ms linear infinite;
-  animation-delay: 3078ms;
+  top: 31vh;
+  left: 37vw;
+  animation: meteor 6056ms linear infinite;
+  animation-delay: 430ms;
 }
 #home .meteor-shower .meteor:nth-child(6) {
   position: absolute;
@@ -386,10 +409,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 36vh;
-  left: 69vw;
-  animation: meteor 4791ms linear infinite;
-  animation-delay: 3652ms;
+  top: 56vh;
+  left: 60vw;
+  animation: meteor 6802ms linear infinite;
+  animation-delay: 2436ms;
 }
 #home .meteor-shower .meteor:nth-child(7) {
   position: absolute;
@@ -397,10 +420,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 95vh;
-  left: 57vw;
-  animation: meteor 7908ms linear infinite;
-  animation-delay: 1061ms;
+  top: 49vh;
+  left: 93vw;
+  animation: meteor 5332ms linear infinite;
+  animation-delay: 1609ms;
 }
 #home .meteor-shower .meteor:nth-child(8) {
   position: absolute;
@@ -408,10 +431,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 16vh;
-  left: 84vw;
-  animation: meteor 4156ms linear infinite;
-  animation-delay: 1158ms;
+  top: 26vh;
+  left: 50vw;
+  animation: meteor 4178ms linear infinite;
+  animation-delay: 1910ms;
 }
 #home .meteor-shower .meteor:nth-child(9) {
   position: absolute;
@@ -419,10 +442,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 85vh;
-  left: 89vw;
-  animation: meteor 3558ms linear infinite;
-  animation-delay: 3408ms;
+  top: 42vh;
+  left: 47vw;
+  animation: meteor 6992ms linear infinite;
+  animation-delay: 1143ms;
 }
 #home .meteor-shower .meteor:nth-child(10) {
   position: absolute;
@@ -430,10 +453,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 4vh;
-  left: 99vw;
-  animation: meteor 7134ms linear infinite;
-  animation-delay: 964ms;
+  top: 70vh;
+  left: 10vw;
+  animation: meteor 3376ms linear infinite;
+  animation-delay: 3197ms;
 }
 #home .meteor-shower .meteor:nth-child(11) {
   position: absolute;
@@ -441,10 +464,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 35vh;
-  left: 7vw;
-  animation: meteor 3679ms linear infinite;
-  animation-delay: 3738ms;
+  top: 75vh;
+  left: 67vw;
+  animation: meteor 4146ms linear infinite;
+  animation-delay: 2088ms;
 }
 #home .meteor-shower .meteor:nth-child(12) {
   position: absolute;
@@ -452,10 +475,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 46vh;
-  left: 43vw;
-  animation: meteor 3435ms linear infinite;
-  animation-delay: 753ms;
+  top: 1vh;
+  left: 32vw;
+  animation: meteor 3707ms linear infinite;
+  animation-delay: 3931ms;
 }
 #home .meteor-shower .meteor:nth-child(13) {
   position: absolute;
@@ -463,10 +486,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 67vh;
-  left: 12vw;
-  animation: meteor 4511ms linear infinite;
-  animation-delay: 4004ms;
+  top: 19vh;
+  left: 32vw;
+  animation: meteor 4214ms linear infinite;
+  animation-delay: 1412ms;
 }
 #home .meteor-shower .meteor:nth-child(14) {
   position: absolute;
@@ -474,10 +497,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 2vh;
-  left: 96vw;
-  animation: meteor 4325ms linear infinite;
-  animation-delay: 2011ms;
+  top: 35vh;
+  left: 13vw;
+  animation: meteor 5967ms linear infinite;
+  animation-delay: 896ms;
 }
 #home .meteor-shower .meteor:nth-child(15) {
   position: absolute;
@@ -485,10 +508,10 @@ main > section header.has-bg img {
   width: 60px;
   height: 49px;
   opacity: 0;
-  top: 34vh;
-  left: 29vw;
-  animation: meteor 6603ms linear infinite;
-  animation-delay: 2402ms;
+  top: 68vh;
+  left: 60vw;
+  animation: meteor 3415ms linear infinite;
+  animation-delay: 2888ms;
 }
 
 @keyframes meteor {
@@ -540,27 +563,6 @@ main > section header.has-bg img {
 #about_me .hero .info .buttons a:first-child {
   margin-right: 24px;
 }
-#about_me header.custom {
-  position: relative;
-  text-align: center;
-  margin-bottom: 42px;
-}
-#about_me header.custom:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background: #D57A66;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: -1;
-}
-#about_me header.custom h2 {
-  display: inline-block;
-  padding: 0 24px;
-  background: #1B1725;
-}
 #about_me .rate {
   display: flex;
 }
@@ -579,7 +581,7 @@ main > section header.has-bg img {
   width: 15px;
   height: 15px;
   border-radius: 4px;
-  background: black;
+  background: #572318;
   transform: rotate(40deg);
 }
 #about_me .rate span:after {
@@ -588,11 +590,11 @@ main > section header.has-bg img {
   width: 15px;
   height: 15px;
   border-radius: 4px;
-  background: black;
+  background: #572318;
   transform: rotate(50deg);
 }
 #about_me .rate span.fill:before, #about_me .rate span.fill:after {
-  background: #19647E;
+  background: #D57A66;
 }
 #about_me .languages-skills {
   margin-top: 126px;
@@ -633,7 +635,7 @@ main > section header.has-bg img {
   position: relative;
   text-align: center;
   padding: 32px 8px;
-  background: #D57A66;
+  background: #19647E;
   margin-bottom: 16px;
   border-radius: 8px;
   z-index: 1;
@@ -647,7 +649,7 @@ main > section header.has-bg img {
   content: "";
   width: 100%;
   height: 100%;
-  background: #082029;
+  background: #a7442e;
   left: 0;
   top: 0;
   border-radius: 8px;
@@ -660,7 +662,7 @@ main > section header.has-bg img {
   content: "";
   width: 100%;
   height: 100%;
-  background: #082029;
+  background: #a7442e;
   left: 0;
   top: 0;
   border-radius: 8px;
@@ -689,6 +691,114 @@ main > section header.has-bg img {
   transform: scale(1.1);
 }
 
+#my_resume {
+  padding-bottom: 115px;
+  background-image: url("../images/bg-shape.png");
+  background-repeat: no-repeat;
+  background-position: 40vw 374px;
+}
+#my_resume header.has-bg {
+  margin-bottom: 64px;
+}
+#my_resume .items .item {
+  display: flex;
+}
+#my_resume .items .item:not(:last-child) {
+  margin-bottom: 42px;
+}
+#my_resume .items .item.last .icon i,
+#my_resume .items .item.last .box .title {
+  color: #D57A66;
+}
+#my_resume .items .item:hover .icon,
+#my_resume .items .item:hover icon:before {
+  background: rgba(87, 35, 24, 0.4);
+}
+#my_resume .items .item:hover .box {
+  background: transparent;
+}
+#my_resume .items .item:hover .box:before {
+  border-right-color: rgba(87, 35, 24, 0.4);
+}
+#my_resume .items .item:hover .box:after {
+  width: 100%;
+}
+#my_resume .items .item .icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #262135;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 18px;
+  margin-right: 46px;
+  margin-top: 23px;
+  transition: all 0.3s;
+}
+#my_resume .items .item .icon:before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 126px;
+  background: #19647E;
+  top: 82px;
+  transition: all 0.3s;
+}
+#my_resume .items .item .box {
+  position: relative;
+  padding: 32px;
+  background: rgba(25, 100, 126, 0.75);
+  border-radius: 8px;
+  text-align: left;
+  z-index: -1;
+  flex-grow: 1;
+  transition: all 0.3s;
+}
+#my_resume .items .item .box:before {
+  content: "";
+  position: absolute;
+  border-right: 9px solid rgba(25, 100, 126, 0.75);
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  left: -9px;
+  top: 36px;
+}
+#my_resume .items .item .box:after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 8px;
+  background: rgba(87, 35, 24, 0.4);
+  z-index: -1;
+  transition: all 0.3s;
+}
+#my_resume .items .item .box .year {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+#my_resume .items .item .box .title {
+  margin-bottom: 16px;
+}
+#my_resume .items .item .box p {
+  font-size: 18px;
+  font-weight: 400;
+  color: #C0D6DF;
+  max-width: 345px;
+}
+#my_resume .education {
+  padding-right: 34px;
+}
+#my_resume .experience {
+  padding-left: 34px;
+}
+
 #contact {
   background: #000;
 }
@@ -702,6 +812,9 @@ main > section header.has-bg img {
   #about_me .languages-skills .languages-key-skills {
     padding-right: 12px;
   }
+  #my_resume .experience {
+    margin-top: 100px;
+  }
 }
 @media (max-width: 991px) {
   #home .image {
@@ -713,7 +826,7 @@ main > section header.has-bg img {
 }
 @media (max-width: 767px) {
   #sidebar {
-    background: #7f3423;
+    background: black;
     padding-right: 60px;
     transform: translateX(-100%);
     transition: all 0.3s;
@@ -773,5 +886,28 @@ main > section header.has-bg img {
   }
   #about_me .hero .info .buttons a:first-child {
     margin-bottom: 16px;
+  }
+  #my_resume .items .item {
+    position: relative;
+  }
+  #my_resume .items .item .icon {
+    position: absolute;
+    top: 54%;
+    transform: translateY(-50%);
+    left: -23px;
+    z-index: 2;
+    margin-top: 0;
+    background: rgba(25, 100, 126, 0.75);
+  }
+  #my_resume .items .item .icon:before {
+    display: none;
+  }
+  #my_resume .items .item .box:before {
+    display: none;
+  }
+  #my_resume .education,
+  #my_resume .experience {
+    padding-right: 12px;
+    padding-left: 12px;
   }
 }/*# sourceMappingURL=main.css.map */
