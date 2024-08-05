@@ -118,8 +118,8 @@
             .meteor:nth-child(#{$i}) {
                 position: absolute;
                 background-image: url('../images/meteor.png');
-                width: 60px;
-                height: 49px;
+                width: 30px;
+                height: 30px;
                 opacity: 0;
                 top: #{random(100)+'vh'};
                 left: #{random(100)+'vw'};
@@ -127,7 +127,6 @@
                 animation-delay: #{random(5000)+'ms'};
             }
         }
-
 
     }
 }

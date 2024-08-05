@@ -22,14 +22,14 @@
                 .box .title {
                     color: $primary;
                 }
+
             }
 
             &:hover {
 
                 .icon,
-                icon:before {
+                .icon:before {
                     background: rgba(darken($primary, 40%), 0.4);
-
                 }
 
                 .box {
@@ -63,7 +63,7 @@
                     content: "";
                     position: absolute;
                     width: 1px;
-                    height: 126px;
+                    height: 200px;
                     background: $secondary;
                     top: 82px;
                     transition: all 0.3s;
@@ -76,7 +76,7 @@
                 background: rgba($secondary, 0.75);
                 border-radius: 8px;
                 text-align: left;
-                z-index: -1;
+                z-index: 1;
                 flex-grow: 1;
                 transition: all 0.3s;
 
@@ -93,7 +93,7 @@
                 &:after {
                     content: "";
                     position: absolute;
-                    width: 0%;
+                    width: 0;
                     height: 100%;
                     left: 0;
                     top: 0;
