@@ -91,33 +91,45 @@ contactFromItems.forEach((item) => {
     })
 })
 
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-        e.preventDefault();
+function onSubmit(e) {
+    e.preventDefault();
 
-        const data = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            subject: document.getElementById("subject").value,
-            message: document.getElementById("message").value
-        };
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6LdBoB8qAAAAAHqcXpmWKGEV2CrpMJGJrHjUv1PU', { action: 'submit' }).then(function (token) {
+            const data = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                subject: document.getElementById("subject").value,
+                message: document.getElementById("message").value,
+                'g-recaptcha-response': token
+            };
 
-        fetch("https://w8e7rbc1of.execute-api.us-east-1.amazonaws.com/prod/sendemail", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Response data:", data);
-                alert("Message sent successfully!");
+            fetch("https://w8e7rbc1of.execute-api.us-east-1.amazonaws.com/prod/sendemail", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
             })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("There was an error sending your message. Please try again.");
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Response data:", data);
+                    document.querySelector('.form').innerHTML = `
+                        <div class="text-center form-success">
+                            <h3>Thank you for your message!</h3>
+                            <p>Your message has been sent successfully. A response will be provided shortly.</p>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    document.querySelector('.form').innerHTML = `
+                        <div class="text-center form-error">
+                            <h3>An error occurred!</h3>
+                            <p>There was an issue sending your message. Please try again later.</p>
+                        </div>
+                    `;
+                });
+        });
     });
-});
-
+}

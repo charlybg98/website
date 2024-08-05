@@ -546,7 +546,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 form">
-                        <form id="contactForm">
+                        <form id="contactForm"
+                            action="https://w8e7rbc1of.execute-api.us-east-1.amazonaws.com/prod/sendemail"
+                            method="post">
                             <div class="form-item">
                                 <label for="name">Nombre</label>
                                 <input type="text" id="name" name="name" required>
@@ -564,10 +566,9 @@
                                 <textarea id="message" name="message" required></textarea>
                             </div>
                             <div class="text-end">
-                                <button type="submit" class="btn-custom-dark">Enviar</button>
+                                <button type="submit" class="btn-custom-blue" onclick="onSubmit(event)">Enviar</button>
                             </div>
                         </form>
-
                     </div>
                     <div class="col-lg-6 info">
                         <div class="item">
@@ -594,6 +595,7 @@
                     </div>
                 </div>
             </div>
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         </section>
     </main>
 
@@ -647,6 +649,7 @@
         integrity="sha512-r8mIpk3ypCMwNxH6srRZGbjHQlOFt3Mq2vrZ/iymx6g9JUqTeVavofeX6gbrxAC74X5HmBy5gxyhCm6OiXrM0Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../assets/js/script_es.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdBoB8qAAAAAHqcXpmWKGEV2CrpMJGJrHjUv1PU"></script>
 </body>
 
 </html>
