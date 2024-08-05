@@ -67,6 +67,16 @@
                     min-height: 171px;
                 }
             }
+
+            .form-success,
+            .form-error {
+                margin-top: 20px;
+                padding: 20px;
+                background-color: transparent;
+                border-radius: 8px;
+                color: #fff;
+                text-align: center;
+            }
         }
 
         .info {
