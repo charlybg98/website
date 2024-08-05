@@ -210,6 +210,17 @@
                     }
                 }
             }
+
+            .additional-skills {
+                h3 {
+                    margin-top: 16px;
+                    margin-bottom: 8px;
+                }
+
+                p {
+                    color: $secondary_gray;
+                }
+            }
         }
     }
 

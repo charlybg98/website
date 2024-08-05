@@ -44,8 +44,6 @@
                 position: relative;
                 margin-bottom: 35px;
 
-
-
                 a {
                     position: relative;
 
@@ -111,27 +109,50 @@
         }
     }
 
-    .toggle-mode {
+    .language-switch {
         height: 20%;
         display: flex;
-        align-items: flex-end;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
         padding-bottom: 62px;
 
-        .outer {
-            width: 28px;
-            height: 35px;
-            background: $secondary;
-            border-radius: 24px;
+        .flag {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+            text-decoration: none;
 
-            .inner {
-                width: 16px;
-                height: 14px;
-                background: $primary;
-                border-radius: 50%;
-                margin-right: auto;
-                margin-left: auto;
-                margin-top: 16px;
+            .language-label {
+                font-size: 12px;
+                margin-bottom: 5px;
+                color: $gray;
+                text-decoration: none;
+            }
+
+            img {
+                width: 24px;
+                height: 24px;
+                cursor: pointer;
+                transition: opacity 0.3s;
+                opacity: 1;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+
+            &.inactive {
+
+                .language-label,
+                img {
+                    opacity: 0.5;
+                    pointer-events: none;
+                    cursor: default;
+                }
             }
         }
     }
+
 }
