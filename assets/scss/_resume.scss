@@ -119,6 +119,11 @@
                     font-weight: 400;
                     color: $gray;
                     max-width: 345px;
+                    margin-bottom: 8px;
+                }
+
+                p+p {
+                    margin-top: 8px;
                 }
             }
         }
