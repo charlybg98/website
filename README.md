@@ -18,7 +18,3 @@ This portfolio website is designed to be fully responsive and compatible with mu
 This portfolio was developed based on the course offered by **Cheetah Academy** on Udemy. If you're interested in learning how to create a portfolio website like this, I highly recommend the course:
 
 [Responsive Portfolio Website using HTML5, CSS3, JavaScript & Bootstrap5](https://www.udemy.com/course/responsive-portfolio-website-using-html5-css3-javascript-bootstrap5/)
-
-## Contributions
-
-Contributions are welcome. Feel free to open an issue or submit a pull request with suggestions for improvements or bug fixes.
