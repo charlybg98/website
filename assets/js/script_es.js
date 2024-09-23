@@ -14,7 +14,7 @@ document.querySelector('#sidebar .toggle-sidebar').addEventListener('click', fun
 })
 
 var options = {
-    strings: ['Científico de Datos', 'Apasionado por el Aprendizaje Automático', 'Desarrollador de IA'],
+    strings: ['Ingeniero de Machine Learning', 'Científico de Datos', 'Especialista en IA'],
     loop: true,
     typeSpeed: 80,
     backSpeed: 10
