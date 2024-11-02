@@ -30,7 +30,7 @@ for (let i = 1; i <= 15; i++) {
 
 
 const shuffleInstance = new Shuffle(document.querySelector('#my_work .work-items'), {
-    itemSelector: '.item'
+    itemSelector: '.item',
 });
 
 const filterButtons = document.querySelectorAll('#my_work .filters button')
