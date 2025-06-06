@@ -11,6 +11,7 @@
     .items {
         .item {
             display: flex;
+            gap: 46px;
 
             &:not(:last-child) {
                 margin-bottom: 42px;
@@ -22,7 +23,6 @@
                 .box .title {
                     color: $primary;
                 }
-
             }
 
             &:hover {
@@ -47,6 +47,7 @@
 
             .icon {
                 position: relative;
+                flex-shrink: 0;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -55,7 +56,6 @@
                 height: 46px;
                 border-radius: 50%;
                 font-size: 18px;
-                margin-right: 46px;
                 margin-top: 23px;
                 transition: all 0.3s;
 
@@ -124,6 +124,20 @@
 
                 p+p {
                     margin-top: 8px;
+                }
+
+                ul {
+                    list-style-type: disc;
+                    padding-left: 20px;
+                    margin: 8px 0;
+                    max-width: none;
+                }
+
+                li {
+                    margin-bottom: 6px;
+                    color: $gray;
+                    font-size: 18px;
+                    font-weight: 400;
                 }
             }
         }
