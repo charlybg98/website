@@ -1,28 +1,21 @@
-// ============================================
-// Charlyfive EPK - SCSS Stylesheet
-// Underground Club / Bass House Aesthetic
-// ============================================
-
-// ----- Variables -----
+@use "sass:color";
 $color-black: #000000;
-$color-dark: #121212;
-$color-dark-lighter: #1a1a1a;
-$color-dark-card: #181818;
-$color-grey: #2a2a2a;
+$color-dark: #0a0a0a;
+$color-dark-lighter: #141414;
+$color-dark-card: #0f0f0f;
+$color-grey: #252525;
 $color-grey-light: #888888;
 $color-white: #ffffff;
 $color-white-muted: rgba(255, 255, 255, 0.7);
 
-// Accent Colors
-$color-accent: #00ff88; // Neon Green
-$color-accent-secondary: #a855f7; // Cyber Purple
-$color-accent-glow: rgba(0, 255, 136, 0.3);
+$color-accent: #00d4ff;
+$color-accent-secondary: #ff00aa;
+$color-accent-glow: rgba(0, 212, 255, 0.35);
+$color-accent-gradient: linear-gradient(135deg, $color-accent 0%, $color-accent-secondary 100%);
 
-// Typography
 $font-heading: 'Montserrat', sans-serif;
 $font-body: 'Inter', sans-serif;
 
-// Spacing
 $spacing-xs: 0.5rem;
 $spacing-sm: 1rem;
 $spacing-md: 2rem;
@@ -30,18 +23,15 @@ $spacing-lg: 4rem;
 $spacing-xl: 6rem;
 $spacing-xxl: 8rem;
 
-// Breakpoints
 $breakpoint-mobile: 576px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
 $breakpoint-wide: 1400px;
 
-// Transitions
 $transition-fast: 0.2s ease;
 $transition-base: 0.3s ease;
 $transition-slow: 0.5s ease;
 
-// ----- Reset & Base -----
 *,
 *::before,
 *::after {
@@ -83,7 +73,6 @@ img {
     display: block;
 }
 
-// ----- Container -----
 .container {
     width: 100%;
     max-width: 1200px;
@@ -95,7 +84,6 @@ img {
     }
 }
 
-// ----- Typography -----
 .section__title {
     font-family: $font-heading;
     font-size: clamp(2rem, 5vw, 3.5rem);
@@ -116,7 +104,6 @@ img {
     font-weight: 300;
 }
 
-// ----- Button Component -----
 .btn {
     display: inline-block;
     font-family: $font-heading;
@@ -150,20 +137,18 @@ img {
         left: 100%;
     }
 
-    // Primary Button
     &--primary {
         background: $color-accent;
         color: $color-black;
         box-shadow: 0 0 20px $color-accent-glow;
 
         &:hover {
-            background: lighten($color-accent, 10%);
+            background: color.adjust($color-accent, $lightness: 10%);
             box-shadow: 0 0 40px $color-accent-glow;
             transform: translateY(-2px);
         }
     }
 
-    // Secondary Button
     &--secondary {
         background: transparent;
         color: $color-white;
@@ -176,7 +161,6 @@ img {
     }
 }
 
-// ----- Navigation -----
 .nav {
     position: fixed;
     top: 0;
@@ -248,7 +232,6 @@ img {
     }
 }
 
-// ----- Section Base -----
 .section {
     padding: $spacing-xxl 0;
 
@@ -257,7 +240,6 @@ img {
     }
 }
 
-// ----- Hero Section -----
 .hero {
     position: relative;
     height: 100vh;
@@ -378,7 +360,6 @@ img {
     }
 }
 
-// ----- Releases Section -----
 .releases {
     background: $color-dark;
 
@@ -414,10 +395,28 @@ img {
         }
     }
 
+    &--featured {
+        @media (min-width: $breakpoint-desktop) {
+            grid-column: 1;
+            grid-row: 1;
+        }
+    }
+
     &__image {
         position: relative;
         aspect-ratio: 1;
         overflow: hidden;
+
+        &--embed {
+            aspect-ratio: auto;
+            min-height: 352px;
+
+            iframe {
+                width: 100%;
+                height: 100%;
+                min-height: 352px;
+            }
+        }
     }
 
     &__placeholder {
@@ -453,55 +452,95 @@ img {
     }
 }
 
-// ----- Sets Section -----
-.sets {
+.remix {
     background: $color-black;
 
-    &__player {
+    &__card {
+        display: block;
         width: 100%;
-    }
-
-    &__placeholder {
-        width: 100%;
-        padding: $spacing-xl $spacing-md;
-        background: linear-gradient(135deg, $color-dark-card 0%, $color-dark 100%);
+        padding: $spacing-xl $spacing-lg;
+        background: linear-gradient(135deg, $color-dark-card 0%, rgba(0, 212, 255, 0.05) 100%);
         border: 1px solid $color-grey;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: $spacing-sm;
+        transition: all $transition-base;
+        cursor: pointer;
+
+        &:hover {
+            border-color: $color-accent;
+            box-shadow: 0 0 30px $color-accent-glow;
+            transform: translateY(-4px);
+
+            .remix__card-icon {
+                background: $color-accent;
+                color: $color-black;
+                transform: scale(1.1);
+            }
+
+            .remix__card-cta {
+                color: $color-accent;
+            }
+        }
     }
 
-    &__placeholder-icon {
-        width: 60px;
-        height: 60px;
+    &__card-content {
+        display: flex;
+        align-items: center;
+        gap: $spacing-lg;
+
+        @media (max-width: $breakpoint-tablet) {
+            flex-direction: column;
+            text-align: center;
+            gap: $spacing-md;
+        }
+    }
+
+    &__card-icon {
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
-        background: $color-accent;
-        color: $color-black;
-        font-size: 1.5rem;
+        background: transparent;
+        border: 2px solid $color-accent;
+        color: $color-accent;
+        font-size: 2rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: $spacing-sm;
+        flex-shrink: 0;
+        transition: all $transition-base;
     }
 
-    &__placeholder p {
+    &__card-info {
+        flex-grow: 1;
+    }
+
+    &__card-title {
         font-family: $font-heading;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: $spacing-xs;
+        color: $color-white;
+    }
+
+    &__card-artist {
         font-size: 1rem;
         color: $color-grey-light;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
     }
 
-    &__placeholder span {
-        font-size: 0.875rem;
+    &__card-cta {
+        font-family: $font-heading;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
         color: $color-grey-light;
+        transition: color $transition-fast;
+        white-space: nowrap;
+
+        @media (max-width: $breakpoint-tablet) {
+            margin-top: $spacing-sm;
+        }
     }
 }
 
-// ----- About Section -----
 .about {
     background: $color-dark;
 
@@ -599,7 +638,6 @@ img {
     }
 }
 
-// ----- Footer -----
 .footer {
     background: $color-black;
     padding: $spacing-xl 0 $spacing-md;
@@ -607,7 +645,7 @@ img {
 
     &__content {
         display: grid;
-        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-columns: 2fr 1fr;
         gap: $spacing-xl;
         margin-bottom: $spacing-xl;
 
@@ -637,7 +675,6 @@ img {
         color: $color-grey-light;
     }
 
-    &__contact,
     &__social {
         h4 {
             font-family: $font-heading;
@@ -646,16 +683,6 @@ img {
             letter-spacing: 0.15em;
             color: $color-grey-light;
             margin-bottom: $spacing-sm;
-        }
-    }
-
-    &__email {
-        color: $color-white;
-        font-size: 1rem;
-        transition: color $transition-fast;
-
-        &:hover {
-            color: $color-accent;
         }
     }
 
@@ -696,7 +723,6 @@ img {
     }
 }
 
-// ----- Animations & Effects -----
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -708,7 +734,6 @@ img {
     }
 }
 
-// ----- Selection Styling -----
 ::selection {
     background: $color-accent;
     color: $color-black;
@@ -719,7 +744,6 @@ img {
     color: $color-black;
 }
 
-// ----- Scrollbar -----
 ::-webkit-scrollbar {
     width: 8px;
 }

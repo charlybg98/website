@@ -1,12 +1,4 @@
-// ============================================
-// CHARLYFIVE GATEWAY - SCSS
-// ============================================
-
-// --------------------------------------------
-// Variables
-// --------------------------------------------
-
-// Colors - Engineer (Tech/Logical)
+@use "sass:color";
 $engineer-bg: #f8fafc;
 $engineer-bg-alt: #e2e8f0;
 $engineer-text: #1e293b;
@@ -14,7 +6,6 @@ $engineer-accent: #3b82f6;
 $engineer-muted: #64748b;
 $engineer-dot: rgba(59, 130, 246, 0.15);
 
-// Colors - Producer (Creative/EDM)
 $producer-bg: #0a0a0f;
 $producer-bg-alt: #0f172a;
 $producer-text: #ffffff;
@@ -22,23 +13,16 @@ $producer-accent-primary: #a855f7;
 $producer-accent-secondary: #ec4899;
 $producer-glow: rgba(168, 85, 247, 0.4);
 
-// Typography
 $font-mono: 'Fira Code', 'Courier New', monospace;
 $font-sans: 'Montserrat', 'Helvetica Neue', sans-serif;
 
-// Transitions
 $transition-expand: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 $transition-fast: 0.3s ease-in-out;
 
-// Layout
 $panel-default: 50%;
 $panel-expanded: 75%;
 $panel-shrunk: 25%;
 $breakpoint-mobile: 768px;
-
-// --------------------------------------------
-// Reset & Base
-// --------------------------------------------
 
 *,
 *::before,
@@ -60,10 +44,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-// --------------------------------------------
-// Gateway Container
-// --------------------------------------------
-
 .gateway {
     display: flex;
     width: 100%;
@@ -74,10 +54,6 @@ body {
         flex-direction: column;
     }
 }
-
-// --------------------------------------------
-// Panel Base Styles
-// --------------------------------------------
 
 .gateway__panel {
     position: relative;
@@ -95,10 +71,6 @@ body {
         min-height: 50vh;
     }
 }
-
-// --------------------------------------------
-// Panel Content
-// --------------------------------------------
 
 .gateway__content {
     position: relative;
@@ -141,10 +113,6 @@ body {
     transition: transform $transition-fast;
 }
 
-// --------------------------------------------
-// Engineer Panel (Left)
-// --------------------------------------------
-
 .gateway__panel--engineer {
     background-color: $engineer-bg;
     color: $engineer-text;
@@ -170,7 +138,6 @@ body {
         }
     }
 
-    // Dot Grid Background
     .gateway__bg--dots {
         position: absolute;
         inset: 0;
@@ -187,10 +154,6 @@ body {
         }
     }
 }
-
-// --------------------------------------------
-// Producer Panel (Right)
-// --------------------------------------------
 
 .gateway__panel--producer {
     background-color: $producer-bg;
@@ -225,7 +188,6 @@ body {
         }
     }
 
-    // Gradient Overlay Background
     .gateway__bg--gradient {
         position: absolute;
         inset: 0;
@@ -251,18 +213,14 @@ body {
     }
 }
 
-// --------------------------------------------
-// Hover States (Desktop Expansion)
-// --------------------------------------------
-
-@media (min-width: $breakpoint-mobile + 1) {
+@media (min-width: #{$breakpoint-mobile + 1px}) {
     .gateway.hover-left {
         .gateway__panel--engineer {
-            flex: 3; // 75%
+            flex: 3;
         }
 
         .gateway__panel--producer {
-            flex: 1; // 25%
+            flex: 1;
 
             .gateway__content {
                 opacity: 0.5;
@@ -273,11 +231,11 @@ body {
 
     .gateway.hover-right {
         .gateway__panel--producer {
-            flex: 3; // 75%
+            flex: 3;
         }
 
         .gateway__panel--engineer {
-            flex: 1; // 25%
+            flex: 1;
 
             .gateway__content {
                 opacity: 0.5;
@@ -287,13 +245,9 @@ body {
     }
 }
 
-// --------------------------------------------
-// Mobile Touch Active States
-// --------------------------------------------
-
 @media (max-width: $breakpoint-mobile) {
     .gateway__panel--engineer.touch-active {
-        background-color: darken($engineer-bg, 5%);
+        background-color: color.adjust($engineer-bg, $lightness: -5%);
 
         .gateway__cta {
             background-color: $engineer-accent;
@@ -309,67 +263,6 @@ body {
     }
 }
 
-// --------------------------------------------
-// Center Logo
-// --------------------------------------------
-
-.gateway__logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 100;
-    pointer-events: none;
-
-    @media (max-width: $breakpoint-mobile) {
-        top: 50%;
-    }
-}
-
-.gateway__logo-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    font-family: $font-sans;
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: #fff;
-    background: linear-gradient(135deg, $engineer-accent, $producer-accent-primary, $producer-accent-secondary);
-    border-radius: 50%;
-    box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.3),
-        0 0 0 4px rgba(255, 255, 255, 0.2);
-    animation: pulse 3s ease-in-out infinite;
-
-    @media (max-width: $breakpoint-mobile) {
-        width: 60px;
-        height: 60px;
-        font-size: 1.25rem;
-    }
-}
-
-@keyframes pulse {
-
-    0%,
-    100% {
-        box-shadow:
-            0 10px 40px rgba(0, 0, 0, 0.3),
-            0 0 0 4px rgba(255, 255, 255, 0.2);
-    }
-
-    50% {
-        box-shadow:
-            0 10px 60px rgba(0, 0, 0, 0.4),
-            0 0 0 8px rgba(255, 255, 255, 0.1);
-    }
-}
-
-// --------------------------------------------
-// Accessibility: Focus States
-// --------------------------------------------
-
 .gateway__panel:focus-visible {
     outline: none;
 
@@ -383,10 +276,6 @@ body {
         pointer-events: none;
     }
 }
-
-// --------------------------------------------
-// Performance: Reduced Motion
-// --------------------------------------------
 
 @media (prefers-reduced-motion: reduce) {
 

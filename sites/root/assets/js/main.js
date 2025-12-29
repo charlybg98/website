@@ -1,48 +1,25 @@
-/**
- * Charlyfive Gateway - Main JavaScript
- * Handles hover/touch interactions for the split-screen layout
- */
-
 (function () {
     'use strict';
 
-    // DOM Elements
     const gateway = document.getElementById('gateway');
     const panelEngineer = document.getElementById('panel-engineer');
     const panelProducer = document.getElementById('panel-producer');
-
-    // Breakpoint for mobile detection
     const MOBILE_BREAKPOINT = 768;
 
-    /**
-     * Check if the current viewport is mobile
-     * @returns {boolean}
-     */
     function isMobile() {
         return window.innerWidth <= MOBILE_BREAKPOINT;
     }
 
-    /**
-     * Remove all hover state classes from gateway
-     */
     function clearHoverStates() {
         gateway.classList.remove('hover-left', 'hover-right');
     }
 
-    /**
-     * Remove all touch active states from panels
-     */
     function clearTouchStates() {
         panelEngineer.classList.remove('touch-active');
         panelProducer.classList.remove('touch-active');
     }
 
-    // =========================================
-    // Desktop: Mouse Hover Interactions
-    // =========================================
-
     if (panelEngineer && panelProducer && gateway) {
-        // Engineer panel (left side)
         panelEngineer.addEventListener('mouseenter', function () {
             if (!isMobile()) {
                 clearHoverStates();
@@ -70,11 +47,6 @@
             }
         });
 
-        // =========================================
-        // Mobile: Touch Interactions
-        // =========================================
-
-        // Engineer panel touch
         panelEngineer.addEventListener('touchstart', function (e) {
             if (isMobile()) {
                 clearTouchStates();
@@ -84,12 +56,9 @@
 
         panelEngineer.addEventListener('touchend', function () {
             if (isMobile()) {
-                // Small delay before removing to show the effect
                 setTimeout(clearTouchStates, 150);
             }
         }, { passive: true });
-
-        // Producer panel touch
         panelProducer.addEventListener('touchstart', function (e) {
             if (isMobile()) {
                 clearTouchStates();
@@ -103,28 +72,17 @@
             }
         }, { passive: true });
 
-        // =========================================
-        // Window Resize Handler
-        // =========================================
-
         let resizeTimeout;
         window.addEventListener('resize', function () {
-            // Debounce resize events
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(function () {
-                // Clear all states when crossing breakpoints
                 clearHoverStates();
                 clearTouchStates();
             }, 100);
         }, { passive: true });
     }
 
-    // =========================================
-    // Keyboard Navigation Enhancement
-    // =========================================
-
     document.addEventListener('keydown', function (e) {
-        // Allow arrow keys to navigate between panels
         if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
             const focusedElement = document.activeElement;
 
@@ -137,10 +95,6 @@
             }
         }
     });
-
-    // =========================================
-    // Focus States for Accessibility
-    // =========================================
 
     panelEngineer.addEventListener('focus', function () {
         if (!isMobile()) {
@@ -168,11 +122,6 @@
         }
     });
 
-    // =========================================
-    // Performance: Preload target pages
-    // =========================================
-
-    // Add prefetch hints for the destination pages
     function addPrefetchHints() {
         const links = [
             'https://portfolio.charlyfive.com',
@@ -187,7 +136,6 @@
         });
     }
 
-    // Prefetch after initial load
     if ('requestIdleCallback' in window) {
         requestIdleCallback(addPrefetchHints);
     } else {
