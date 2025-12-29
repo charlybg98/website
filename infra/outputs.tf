@@ -9,3 +9,8 @@ output "cloudfront_domains" {
 output "www_redirect_bucket" {
   value = aws_s3_bucket.www.bucket
 }
+
+output "cloudfront_distribution_ids" {
+  description = "Distribution IDs for cache invalidation"
+  value       = { for k, v in aws_cloudfront_distribution.content : k => v.id }
+}
