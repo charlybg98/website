@@ -1,3 +1,25 @@
+resource "aws_cloudfront_function" "rewrite_index" {
+  name    = "rewrite-index-html"
+  runtime = "cloudfront-js-1.0"
+  comment = "Appends index.html to directory requests for SPA/Static sites"
+  publish = true
+  code    = <<EOF
+function handler(event) {
+    var request = event.request;
+    var uri = request.uri;
+    
+    if (uri.endsWith('/')) {
+        request.uri += 'index.html';
+    } 
+    else if (!uri.includes('.')) {
+        request.uri += '/index.html';
+    }
+
+    return request;
+}
+EOF
+}
+
 resource "aws_cloudfront_origin_access_control" "content" {
   for_each                          = local.content_sites
   name                              = "${each.value}-oac"
@@ -33,6 +55,11 @@ resource "aws_cloudfront_distribution" "content" {
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
+
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.rewrite_index.arn
+    }
   }
 
   viewer_certificate {
