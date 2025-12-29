@@ -1,20 +1,57 @@
-# Personal Portfolio Website
+# Charlyfive Websites
 
-This repository contains the source code for my personal portfolio website, which showcases my projects, education, and professional experience. The goal of this portfolio is to provide a clear and attractive representation of my professional profile and technical skills.
+This monorepo contains the source code and infrastructure for the **Charlyfive** personal brand websites, hosted under the `charlyfive.com` domain.
 
-## Languages Used
+## Project Structure
 
-- **HTML**
-- **SCSS**
-- **CSS**
-- **JavaScript**
+```
+website/
+├── sites/
+│   ├── root/        # Gateway landing page (charlyfive.com)
+│   ├── portfolio/   # ML Engineer portfolio (portfolio.charlyfive.com)
+│   └── music/       # Music producer EPK (music.charlyfive.com)
+├── infra/           # Terraform infrastructure (AWS S3, CloudFront, Route 53)
+└── deploy.sh        # Deployment script
+```
 
-## Description
+## Sites
 
-This portfolio website is designed to be fully responsive and compatible with multiple devices. It includes sections detailing my work experience, education, technical skills, and a gallery of projects I have worked on.
+| Site | URL | Description |
+|------|-----|-------------|
+| **Gateway** | [charlyfive.com](https://charlyfive.com) | Split-screen landing page directing users to Portfolio or Music sites |
+| **Portfolio** | [portfolio.charlyfive.com](https://portfolio.charlyfive.com) | Machine Learning Engineer portfolio showcasing projects, certifications, and experience |
+| **Music** | [music.charlyfive.com](https://music.charlyfive.com) | Electronic Music Producer EPK with releases, remixes, and social links |
+
+## Technologies
+
+### Frontend
+- **HTML5** - Semantic structure
+- **SCSS/CSS** - Styling with variables and modern design patterns
+- **JavaScript** - Interactivity and animations
+- **Bootstrap 5** - Grid system (Portfolio site)
+
+### Infrastructure
+- **Terraform** - Infrastructure as Code
+- **AWS S3** - Static site hosting
+- **AWS CloudFront** - CDN distribution
+- **AWS Route 53** - DNS management
+
+## Deployment
+
+Deploy individual sites or all at once using the deploy script:
+
+```bash
+# Deploy individual sites
+./deploy.sh root       # Gateway
+./deploy.sh music      # Music EPK
+./deploy.sh portfolio  # Portfolio
+
+# Deploy all sites
+./deploy.sh all
+```
 
 ## Acknowledgements
 
-This portfolio was developed based on the course offered by **Cheetah Academy** on Udemy. If you're interested in learning how to create a portfolio website like this, I highly recommend the course:
+The portfolio site was developed based on the course offered by **Cheetah Academy** on Udemy:
 
 [Responsive Portfolio Website using HTML5, CSS3, JavaScript & Bootstrap5](https://www.udemy.com/course/responsive-portfolio-website-using-html5-css3-javascript-bootstrap5/)
