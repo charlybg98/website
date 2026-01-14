@@ -16,6 +16,10 @@ PORTFOLIO_BUCKET="s3://portfolio.charlyfive.com"
 PORTFOLIO_DIST_ID="E1N5DOECVPGRB1"
 PORTFOLIO_DIR="sites/portfolio/"
 
+STREAM_BUCKET="s3://stream.charlyfive.com"
+STREAM_DIST_ID="E3FHHIAEEDEKCZ"
+STREAM_DIR="sites/stream/"
+
 deploy_site() {
     local SITE_NAME=$1
     local DIR=$2
@@ -44,13 +48,17 @@ case "$1" in
     portfolio)
         deploy_site "Portfolio" $PORTFOLIO_DIR $PORTFOLIO_BUCKET $PORTFOLIO_DIST_ID
         ;;
+    stream)
+        deploy_site "Stream Site" $STREAM_DIR $STREAM_BUCKET $STREAM_DIST_ID
+        ;;
     all)
         deploy_site "Gateway (Root)" $ROOT_DIR $ROOT_BUCKET $ROOT_DIST_ID
         deploy_site "Music Site" $MUSIC_DIR $MUSIC_BUCKET $MUSIC_DIST_ID
         deploy_site "Portfolio" $PORTFOLIO_DIR $PORTFOLIO_BUCKET $PORTFOLIO_DIST_ID
+        deploy_site "Stream Site" $STREAM_DIR $STREAM_BUCKET $STREAM_DIST_ID
         ;;
     *)
-        echo "Usage: ./deploy.sh [root|music|portfolio|all]"
+        echo "Usage: ./deploy.sh [root|music|portfolio|stream|all]"
         exit 1
         ;;
 esac
