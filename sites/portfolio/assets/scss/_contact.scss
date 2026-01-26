@@ -1,121 +1,67 @@
 #contact_me {
-    background-image: url(../images/bg-shape.png);
-    background-repeat: no-repeat;
-    background-position: 53vw 574px;
-    min-height: 100vh;
+    background: $dark_bg;
 
-    .container {
-        margin-top: 123px;
+    .form {
+        background: rgba($secondary, 0.05);
+        border: 1px solid rgba($gray, 0.06);
+        padding: 2rem;
+        border-radius: 16px;
 
-        .form {
-            padding-right: 69px;
+        .form-item {
+            margin-bottom: 1.25rem;
 
-            .form-item {
-                position: relative;
-                margin-bottom: 32px;
+            label {
+                display: block;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+                color: $text_main;
+            }
 
-                &.focus {
-                    label {
-                        top: -3px;
-                        font-size: 12px;
-                    }
+            input,
+            textarea {
+                width: 100%;
+                padding: 12px 14px;
+                border-radius: 10px;
+                border: 1px solid rgba($gray, 0.08);
+                background: rgba(255,255,255,0.02);
+                color: $text_main;
+                font-family: $font_main;
+                transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
-                    &:after {
-                        width: 100%;
-                    }
-                }
-
-                &:before {
-                    content: "";
-                    position: absolute;
-                    height: 2px;
-                    width: 100%;
-                    background: $secondary_gray;
-                    bottom: 0;
-                    left: 0;
-                }
-
-                &:after {
-                    content: "";
-                    position: absolute;
-                    height: 2px;
-                    width: 0;
-                    background: $primary;
-                    bottom: 0;
-                    left: 0;
-                    transition: all 0.3s;
-                }
-
-                label {
-                    position: absolute;
-                    top: 17px;
-                    color: $secondary_gray;
-                    transition: all 0.3s;
-                }
-
-                input,
-                textarea {
-                    width: 100%;
-                    background: transparent;
+                &:focus {
                     outline: none;
-                    border: none;
-                    padding: 16px 0;
-                }
-
-                textarea {
-                    resize: none;
-                    min-height: 171px;
+                    border-color: $primary;
+                    box-shadow: 0 6px 18px rgba($primary, 0.12);
                 }
             }
 
-            .form-success,
-            .form-error {
-                margin-top: 20px;
-                padding: 20px;
-                background-color: transparent;
-                border-radius: 8px;
-                color: #fff;
-                text-align: center;
+            textarea {
+                min-height: 140px;
+                resize: vertical;
             }
         }
 
-        .info {
-            padding-left: 69px;
+        .form-success, .form-error {
+            padding: 2rem;
+            border-radius: 12px;
+            background: rgba($primary, 0.05);
+            border: 1px solid rgba($primary, 0.06);
+            color: $text_main;
+        }
+    }
 
-            .item {
-                display: flex;
-                align-items: center;
-                margin-bottom: 32px;
+    .info {
+        .item {
+            i {
+                color: $primary;
+            }
+
+            a {
+                color: $text_main;
+                text-decoration: none;
 
                 &:hover {
-                    i {
-                        background: $primary;
-                    }
-                }
-
-                i {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 46px;
-                    height: 46px;
-                    background: rgba(#ffffff, 0.05);
-                    border-radius: 50%;
-                    font-size: 18px;
-                    margin-right: 16px;
-                    transition: all 0.3s;
-                }
-
-                .text {
-                    .title {
-                        color: $gray;
-                    }
-
-                    a {
-                        display: block;
-                        color: #fff;
-                        text-decoration: none;
-                    }
+                    color: $primary;
                 }
             }
         }
