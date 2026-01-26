@@ -63,6 +63,11 @@ workElements.forEach((item) => {
         document.querySelector('#workModal .modal-body .project-link a').setAttribute('href', item.getAttribute('data-project-link'))
 
         workModal.show();
+        // focus management: move focus to close button for accessibility
+        setTimeout(() => {
+            const closeBtn = document.querySelector("#workModal .modal-close-button");
+            if (closeBtn) closeBtn.focus();
+        }, 200);
     })
 })
 
@@ -70,11 +75,14 @@ var workModalElement = document.getElementById('workModal')
 workModalElement.addEventListener('show.bs.modal', function (event) {
     document.getElementById('my_work').classList.add('blur');
     document.getElementById('sidebar').classList.add('blur');
+    // trap focus inside modal
+    document.addEventListener('focus', trapFocus, true);
 })
 
 workModalElement.addEventListener('hide.bs.modal', function (event) {
     document.getElementById('my_work').classList.remove('blur');
     document.getElementById('sidebar').classList.remove('blur');
+    document.removeEventListener('focus', trapFocus, true);
 })
 
 let contactFromItems = document.querySelectorAll('#contact_me .form input, #contact_me .form textarea');
@@ -132,4 +140,12 @@ function onSubmit(e) {
                 });
         });
     });
+}
+
+function trapFocus(e) {
+    const modal = document.getElementById('workModal');
+    if (!modal) return;
+    if (modal.contains(e.target)) return;
+    const focusable = modal.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+    if (focusable.length) { focusable[0].focus(); e.preventDefault(); }
 }
