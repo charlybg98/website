@@ -1,6 +1,10 @@
 #my_work {
     background-color: $dark_bg;
 
+    .text-center {
+        margin-bottom: 2rem;
+    }
+
     .filters {
         display: flex;
         justify-content: center;
