@@ -8,30 +8,32 @@
         border-radius: 16px;
 
         .form-item {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
 
             label {
                 display: block;
-                font-weight: 600;
-                margin-bottom: 0.5rem;
+                font-weight: 500;
+                font-size: 0.95rem;
+                margin-bottom: 0.75rem;
                 color: $text_main;
             }
 
             input,
             textarea {
                 width: 100%;
-                padding: 12px 14px;
-                border-radius: 10px;
-                border: 1px solid rgba($gray, 0.08);
-                background: rgba(255,255,255,0.02);
+                padding: 14px 16px;
+                border-radius: 12px;
+                border: 1px solid rgba($gray, 0.15);
+                background: rgba(255,255,255,0.04);
                 color: $text_main;
                 font-family: $font_main;
-                transition: border-color 0.2s ease, box-shadow 0.2s ease;
+                transition: all 0.3s ease;
 
                 &:focus {
                     outline: none;
                     border-color: $primary;
-                    box-shadow: 0 6px 18px rgba($primary, 0.12);
+                    background: rgba(255,255,255,0.07);
+                    box-shadow: 0 0 0 4px rgba($primary, 0.1);
                 }
             }
 
@@ -51,16 +53,49 @@
     }
 
     .info {
+        padding-left: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+
         .item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            
             i {
                 color: $primary;
+                font-size: 1.5rem;
+                width: 50px;
+                height: 50px;
+                background: rgba($primary, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 12px;
             }
 
-            a {
-                color: $text_main;
-                text-decoration: none;
+            .text {
+                .title {
+                    display: block;
+                    font-size: 0.85rem;
+                    color: $text_muted;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    margin-bottom: 4px;
+                }
 
-                &:hover {
+                p, a {
+                    margin: 0;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    color: $text_main;
+                    text-decoration: none;
+                    transition: color 0.2s ease;
+                }
+
+                a:hover {
                     color: $primary;
                 }
             }
