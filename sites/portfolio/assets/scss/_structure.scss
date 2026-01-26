@@ -1,11 +1,22 @@
 main {
     padding-left: 102px;
+    width: 100%;
+    min-height: 100vh;
+    background: $dark_bg;
 
-    >section {
+    > section {
         display: none;
-        padding-right: 32px;
-        padding-left: 32px;
         width: 100%;
+        min-height: 100vh;
+        padding: 80px 40px;
+        position: relative;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+
+        &.active {
+            display: block;
+            opacity: 1;
+        }
 
         .container {
             max-width: 1200px;
