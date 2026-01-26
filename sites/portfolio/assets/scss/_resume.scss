@@ -38,7 +38,7 @@
             position: relative;
             margin-bottom: 3rem;
 
-            &.last {
+            &:last-child, &.last {
                 margin-bottom: 0;
             }
 
