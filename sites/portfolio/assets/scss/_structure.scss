@@ -17,11 +17,10 @@ main {
         header.has-bg {
             position: relative;
             display: inline-flex;
+            margin-bottom: 2rem;
 
             img {
-                position: absolute;
-                top: 15px;
-                left: -72px;
+                display: none; // Removed old background images for cleaner look
             }
         }
 
