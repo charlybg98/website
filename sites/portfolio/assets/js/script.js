@@ -6,6 +6,14 @@ navLinks.forEach((item) => {
         document.querySelector(`nav ul li a[href='${item.getAttribute('href')}']`).classList.add('active')
         document.querySelector('main > section.active').classList.remove('active')
         document.querySelector(`main > section${item.getAttribute('href')}`).classList.add('active');
+
+        // Fix: Force Shuffle layout update when switching to Portfolio section
+        if (item.getAttribute('href') === '#my_work' && typeof shuffleInstance !== 'undefined') {
+            setTimeout(() => {
+                shuffleInstance.update();
+                shuffleInstance.layout();
+            }, 150);
+        }
     })
 })
 

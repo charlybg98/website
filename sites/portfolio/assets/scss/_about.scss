@@ -3,6 +3,9 @@
 
     .hero {
         margin-bottom: 6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         .image {
             img {
