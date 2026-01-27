@@ -1,10 +1,27 @@
 main {
     padding-left: 102px;
+    width: 100%;
+    min-height: 100vh;
+    background: $dark_bg;
 
-    >section {
+    > section {
         display: none;
-        padding-right: 32x;
-        padding-left: 32px;
+        width: 100%;
+        min-height: 100vh;
+        padding: 80px 40px;
+        position: relative;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+
+        &.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
         &:not(#home) {
             padding-top: 64px;
@@ -17,11 +34,10 @@ main {
         header.has-bg {
             position: relative;
             display: inline-flex;
+            margin-bottom: 2rem;
 
             img {
-                position: absolute;
-                top: 15px;
-                left: -72px;
+                display: none; // Removed old background images for cleaner look
             }
         }
 

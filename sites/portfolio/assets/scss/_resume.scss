@@ -1,153 +1,126 @@
 #my_resume {
-    padding-bottom: 115px;
-    background-image: url("../images/bg-shape.png");
-    background-repeat: no-repeat;
-    background-position: 40vw 374px;
+    background-color: $dark_bg;
 
-    header.has-bg {
-        margin-bottom: 64px;
+    .custom h2 {
+        text-align: left;
+        margin-bottom: 3rem;
+        font-size: 1.8rem;
+        position: relative;
+        padding-bottom: 10px;
+
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 4px;
+            background: $primary;
+            border-radius: 2px;
+        }
     }
 
     .items {
+        position: relative;
+        padding-left: 3rem;
+
+        &:before {
+            content: "";
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba($primary, 0.2);
+        }
+
         .item {
-            display: flex;
-            gap: 46px;
+            position: relative;
+            margin-bottom: 3rem;
 
-            &:not(:last-child) {
-                margin-bottom: 42px;
-            }
-
-            &.last {
-
-                .icon i,
-                .box .title {
-                    color: $primary;
-                }
-            }
-
-            &:hover {
-
-                .icon,
-                .icon:before {
-                    background: rgba(darken($primary, 40%), 0.4);
-                }
-
-                .box {
-                    background: transparent;
-
-                    &:before {
-                        border-right-color: rgba(darken($primary, 40%), 0.4);
-                    }
-
-                    &:after {
-                        width: 100%;
-                    }
-                }
+            &:last-child, &.last {
+                margin-bottom: 0;
             }
 
             .icon {
-                position: relative;
-                flex-shrink: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background: lighten($dark_bg, 5%);
-                width: 46px;
-                height: 46px;
+                position: absolute;
+                left: -3rem;
+                width: 32px;
+                height: 32px;
+                background: $primary;
                 border-radius: 50%;
-                font-size: 18px;
-                margin-top: 23px;
-                transition: all 0.3s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1;
+                box-shadow: 0 0 0 4px $dark_bg;
 
-                &:before {
-                    content: "";
-                    position: absolute;
-                    width: 1px;
-                    height: 200px;
-                    background: $secondary;
-                    top: 82px;
-                    transition: all 0.3s;
+                i {
+                    font-size: 1rem;
+                    color: #fff;
                 }
             }
 
             .box {
-                position: relative;
-                padding: 32px;
-                background: rgba($secondary, 0.75);
-                border-radius: 8px;
-                text-align: left;
-                z-index: 1;
-                flex-grow: 1;
-                transition: all 0.3s;
+                background: rgba($secondary, 0.1);
+                border: 1px solid rgba($gray, 0.1);
+                border-radius: 20px;
+                padding: 2rem;
+                transition: all 0.3s ease;
 
-                &:before {
-                    content: "";
-                    position: absolute;
-                    border-right: 9px solid rgba($secondary, 0.75);
-                    border-top: 9px solid transparent;
-                    border-bottom: 9px solid transparent;
-                    left: -9px;
-                    top: 36px;
-                }
-
-                &:after {
-                    content: "";
-                    position: absolute;
-                    width: 0;
-                    height: 100%;
-                    left: 0;
-                    top: 0;
-                    border-radius: 8px;
-                    background: rgba(darken($primary, 40%), 0.4);
-                    z-index: -1;
-                    transition: all 0.3s;
+                &:hover {
+                    background: rgba($secondary, 0.2);
+                    border-color: rgba($primary, 0.3);
+                    transform: translateX(10px);
                 }
 
                 .year {
                     display: inline-block;
-                    font-size: 18px;
-                    font-weight: 400;
-                    margin-bottom: 16px;
+                    background: rgba($primary, 0.2);
+                    color: $primary;
+                    font-family: $font_mono;
+                    font-size: 0.85rem;
+                    padding: 4px 12px;
+                    border-radius: 20px;
+                    margin-bottom: 1rem;
+                    font-weight: 500;
                 }
 
                 .title {
-                    margin-bottom: 16px;
+                    font-size: 1.25rem;
+                    color: $text_main;
+                    margin-bottom: 0.5rem;
+                    font-weight: 700;
                 }
 
                 p {
-                    font-size: 18px;
-                    font-weight: 400;
-                    color: $gray;
-                    max-width: 345px;
-                    margin-bottom: 8px;
-                }
-
-                p+p {
-                    margin-top: 8px;
+                    font-weight: 600;
+                    color: $accent_blue;
+                    margin-bottom: 1rem;
                 }
 
                 ul {
-                    list-style-type: disc;
-                    padding-left: 20px;
-                    margin: 8px 0;
-                    max-width: none;
-                }
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
 
-                li {
-                    margin-bottom: 6px;
-                    color: $gray;
-                    font-size: 18px;
-                    font-weight: 400;
+                    li {
+                        position: relative;
+                        padding-left: 1.5rem;
+                        margin-bottom: 0.75rem;
+                        color: $text_muted;
+                        line-height: 1.6;
+
+                        &:before {
+                            content: "→";
+                            position: absolute;
+                            left: 0;
+                            color: $primary;
+                            font-weight: bold;
+                        }
+                    }
                 }
             }
         }
-    }
-
-    .education {
-        padding-right: 34px;
-    }
-
-    .experience {
-        padding-left: 34px;
     }
 }

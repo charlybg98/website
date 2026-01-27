@@ -1,174 +1,184 @@
 #my_work {
-    &.blur {
-        filter: blur(2px);
+    background-color: $dark_bg;
+
+    .text-center {
+        margin-bottom: 2rem;
     }
 
     .filters {
-        text-align: center;
-        margin-top: 81px;
-        margin-bottom: 55px;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
 
         button {
-            background: transparent;
-            color: $secondary_gray;
-            border: none;
-            padding: 8px 16px;
-            margin-right: 8px;
-            margin-left: 8px;
-            margin-bottom: 16px;
+            background: rgba($secondary, 0.2);
+            border: 1px solid rgba($gray, 0.2);
+            color: $text_muted;
+            padding: 8px 24px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+
+            h4 {
+                margin: 0;
+                font-size: 0.9rem;
+                font-weight: 500;
+            }
+
+            &:hover {
+                border-color: $primary;
+                color: $text_main;
+            }
 
             &.active {
+                background: $primary;
+                border-color: $primary;
                 color: #fff;
-                background: $secondary;
-                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba($primary, 0.3);
             }
         }
     }
 
     .work-items {
         .item {
-            margin-bottom: 24px;
+            margin-bottom: 2rem;
 
             .wrap {
                 position: relative;
+                border-radius: 20px;
                 overflow: hidden;
-
-                &:hover {
-                    &:before {
-                        transform: rotate(0deg);
-                    }
-
-                    &:after {
-                        transform: translate(-50%, -50%) rotate(0deg);
-                    }
-                }
-
-                &:before {
-                    content: "";
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba($primary, 0.6);
-                    border-radius: 8px;
-                    z-index: 1;
-                    cursor: pointer;
-                    transform: rotate(-100deg);
-                    transform-origin: top left;
-                    transition: all 0.3s;
-                }
-
-                &:after {
-                    content: "View";
-                    position: absolute;
-                    width: 96%;
-                    height: 95%;
-                    background: rgba($dark_bg, 0.8);
-                    border-radius: 8px;
-                    transform-origin: bottom left;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%) rotate(100deg);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: 24px;
-                    letter-spacing: 3px;
-                    z-index: 2;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                }
-
-                &.es::after {
-                    content: "Ver";
-                }
+                background: $secondary;
+                cursor: pointer;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
                 img {
                     width: 100%;
-                    opacity: 0.5;
-                    border-radius: 8px;
-                    cursor: pointer;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(to top, rgba($dark_bg, 0.9) 0%, transparent 70%);
+                    opacity: 0;
+                    transition: opacity 0.4s ease;
+                }
+
+                &:hover {
+                    transform: translateY(-10px);
+                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+                    img {
+                        transform: scale(1.1);
+                    }
+
+                    &:after {
+                        opacity: 1;
+                    }
                 }
             }
         }
     }
 }
 
-.modal#workModal {
-    .modal-dialog {
-        max-width: 863px;
+// Modal Customization
+#workModal {
+    .modal-content {
+        background-color: color.adjust($dark_bg, $lightness: 2%);
+        border: 1px solid rgba($gray, 0.1);
+        border-radius: 24px;
+        overflow: hidden;
+        color: $text_main;
+    }
 
-        .modal-content {
-            background: $secondary;
-            padding: 32px;
+    .modal-body {
+        padding: 0;
 
-            .modal-body {
-                padding: 0;
-                position: static;
+        .modal-close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            background: rgba($dark_bg, 0.5);
+            border: none;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
 
-                .modal-close-button {
-                    position: absolute;
-                    right: -23px;
-                    top: -23px;
-                    background: $dark_bg;
-                    font-size: 22px;
-                    width: 46px;
-                    height: 46px;
-                    border-radius: 50%;
-                    border: none;
-                    transition: all 0.3s;
+            &:hover {
+                background: $primary;
+            }
+        }
 
-                    &:hover {
-                        background: darken($primary, 40%);
-                    }
+        img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .container-fluid {
+            padding: 2.5rem;
+
+            .left {
+                .title {
+                    font-size: 2rem;
+                    margin-bottom: 1.5rem;
+                    color: $text_main;
                 }
-
-                img {
-                    width: 100%;
-                    height: 532px;
-                    object-fit: cover;
-                    border-radius: 8px;
+                .description {
+                    font-size: 1.05rem;
+                    line-height: 1.8;
+                    color: $text_muted;
                 }
+            }
 
-                .left {
-                    padding-left: 0;
-                    padding-right: 32px;
+            .right {
+                background: rgba($secondary, 0.1);
+                border-radius: 20px;
+                padding: 2rem;
 
-                    h2 {
-                        margin-top: 32px;
-                        margin-bottom: 16px;
-                    }
-
-                    p {
-                        color: $gray;
-                    }
-                }
-
-                .right {
-                    padding-right: 0;
-                    padding-left: 32px;
-                    padding-top: 80px;
+                div {
+                    margin-bottom: 1.25rem;
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 1rem;
 
                     i {
-                        font-size: 18px;
-                        margin-right: 2px;
+                        color: $primary;
+                        font-size: 1.25rem;
+                        margin-top: 3px;
+                    }
+
+                    .title {
+                        font-weight: 600;
+                        color: $text_main;
+                        min-width: 90px;
                     }
 
                     .value {
-                        color: $gray;
+                        color: $text_muted;
                     }
+                }
 
-                    .project-link {
-                        margin-top: 32px;
-
-                        a,
-                        i {
-                            color: $primary;
-                            text-decoration: none;
-                        }
-
-                        a:hover {
-                            text-decoration: underline;
-                        }
+                .project-link {
+                    margin-top: 2rem;
+                    a {
+                        @extend .btn-custom-blue;
+                        width: 100%;
+                        padding: 10px;
+                        font-size: 0.9rem;
                     }
                 }
             }

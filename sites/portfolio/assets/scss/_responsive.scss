@@ -1,211 +1,186 @@
-@media (min-width: 1400px) {
-    .container {
-        max-width: 1200px;
+// Ultra-wide screens - ensure content stays centered
+@media (min-width: 1920px) {
+    main>section {
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
     }
 }
 
-@media (max-width: 1199px) {
+// Large desktops
+@media (max-width: 1400px) {
     #about_me {
-        .languages-skills .languages-key-skills {
-            padding-right: 12px;
+        .hero {
+            .image img {
+                max-width: 350px;
+            }
+        }
+    }
+}
+
+// Medium desktops - fix About Me overlap
+@media (max-width: 1200px) {
+    #home {
+        .info {
+            h1 {
+                font-size: 3rem;
+            }
         }
     }
 
-    #my_resume {
-        .experience {
-            margin-top: 100px;
-        }
-    }
+    #about_me {
+        .hero {
+            .image {
+                order: 2; // Move image below on medium screens
 
-    #contact_me {
-        .container {
-            .form {
-                padding-right: 12px;
+                img {
+                    max-width: 300px;
+                    margin-top: 2rem;
+                }
             }
 
             .info {
-                padding-left: 12px;
+                order: 1;
+            }
+        }
+
+        .languages-skills {
+            .languages-key-skills {
+                margin-bottom: 2rem;
             }
         }
     }
 }
 
 @media (max-width: 991px) {
-    #home {
-        .image {
-            justify-content: flex-start;
-            height: unset;
-            margin-top: 40px;
-            margin-bottom: 40px;
+    #sidebar {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        border-right: none;
+        border-top: 1px solid rgba($gray, 0.1);
+        padding: 0;
+        flex-direction: row;
+        justify-content: center;
+        background: rgba(color.adjust($dark_bg, $lightness: 3%), 0.95);
+        backdrop-filter: blur(10px);
+
+        .logo {
+            display: none;
+        }
+
+        .language-switch {
+            display: none;
+        }
+
+        nav {
+            height: 100%;
+
+            ul {
+                flex-direction: row;
+                height: 100%;
+                gap: 0;
+                justify-content: space-around;
+
+                li {
+                    height: 100%;
+
+                    a {
+                        height: 100%;
+                        border-radius: 0;
+                        width: 60px;
+                    }
+
+                    >span {
+                        display: none;
+                    }
+
+                    // Hide tooltips on mobile
+                }
+            }
         }
     }
 
-    .modal#workModal .modal-dialog .modal-content .modal-body .modal-close-button {
-        right: 10px;
-        top: 10px;
+    main {
+        padding-left: 0;
+        padding-bottom: 80px; // Space for bottom bar
+
+        >section {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     }
 
-    #contact_me {
-        .container {
-            .info {
-                margin-top: 80px;
+    #home {
+        text-align: center;
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 2rem;
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            p {
+                margin: 0 auto 2rem;
+            }
+        }
+
+        .image {
+            display: none; // Better ux for mobile hero
+        }
+    }
+
+    #about_me {
+        .hero {
+            flex-direction: column;
+            text-align: center;
+
+            .info .buttons {
+                justify-content: center;
+            }
+
+            .info .items .item {
+                justify-content: center;
+            }
+        }
+
+        .languages-skills .custom h2 {
+            text-align: center;
+
+            &:after {
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
     }
 }
 
-@media (max-width: 767px) {
-    #sidebar {
-        background: darken($secondary, 30%);
-        padding-right: 60px;
-        transform: translateX(-100%);
-        transition: all 0.3s;
-
-        &.open {
-            transform: translateX(0);
-        }
-
-        .toggle-sidebar {
-            display: flex;
-        }
-
-        .logo {
-            text-align: left;
-        }
-
-        nav ul li {
-            a {
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-
-                span {
-                    display: block;
-                    padding-left: 8px;
-                }
-            }
-
-            >span {
-                display: none;
-            }
-        }
-    }
-
-    h1 {
-        font-size: 36px;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
-
-    main {
-        padding-left: 0;
-
-        >section header.has-bg img {
-            left: -13px;
-            top: -4px;
-        }
-    }
-
+@media (max-width: 576px) {
     #home {
-        background-image: unset;
+        h1 {
+            font-size: 2rem;
+        }
 
-        .info {
-            padding-top: 80px;
-
-            .socials {
-                margin-top: 70px;
-
-                ul {
-                    justify-content: space-between;
-                }
-            }
+        .field h2 {
+            font-size: 1.2rem;
         }
     }
 
-    #about_me {
-        .hero .info .buttons {
-            flex-direction: column;
+    #about_me .hero .info .buttons {
+        flex-direction: column;
+        width: 100%;
 
-            a {
-                width: 100%;
-                text-align: center;
-
-                &:first-child {
-                    margin-bottom: 16px;
-                }
-            }
-        }
-    }
-
-    #my_resume {
-        .items {
-            .item {
-                position: relative;
-
-                .icon {
-                    position: absolute;
-                    top: 54%;
-                    transform: translateY(-50%);
-                    left: -23px;
-                    z-index: 2;
-                    margin-top: 0;
-                    background: rgba($secondary, 0.75);
-
-                    &:before {
-                        display: none;
-                    }
-                }
-
-                .box:before {
-                    display: none;
-                }
-            }
-        }
-
-        .education,
-        .experience {
-            padding-right: 12px;
-            padding-left: 12px;
-        }
-    }
-
-    .modal#workModal {
-        .modal-dialog .modal-content .modal-body {
-            img {
-                height: unset;
-            }
-
-            .left {
-                padding-right: 0;
-            }
-
-            .right {
-                padding-left: 0;
-                padding-top: 32px;
-            }
-        }
-    }
-
-    #contact_me {
-        .container {
-            .info {
-                .item {
-                    flex-direction: column;
-                    text-align: center;
-                    margin-bottom: 32px;
-
-                    i {
-                        margin-right: 0;
-                        margin-bottom: 8px;
-                    }
-
-                    br {
-                        display: none;
-                    }
-                }
-            }
+        .btn-custom-blue,
+        .btn-custom-dark {
+            width: 100%;
         }
     }
 }

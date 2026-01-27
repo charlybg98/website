@@ -1,95 +1,126 @@
 let navLinks = document.querySelectorAll('a.inner-link');
 
 navLinks.forEach((item) => {
-    item.addEventListener('click', function () {
-        document.querySelector('nav ul li a.active').classList.remove('active')
-        document.querySelector(`nav ul li a[href='${item.getAttribute('href')}']`).classList.add('active')
-        document.querySelector('main > section.active').classList.remove('active')
-        document.querySelector(`main > section${item.getAttribute('href')}`).classList.add('active');
-    })
-})
+    item.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = item.getAttribute('href');
+        const targetSection = document.querySelector(`main > section${targetId}`);
+
+        if (!targetSection) return;
+
+        // 1. Update Navigation UI
+        const currentActiveLink = document.querySelector('nav ul li a.active');
+        if (currentActiveLink) currentActiveLink.classList.remove('active');
+        item.classList.add('active');
+
+        // 2. Hide ALL sections and remove active class
+        document.querySelectorAll('main > section').forEach(section => {
+            section.classList.remove('active');
+            section.style.display = 'none';
+        });
+
+        // 3. Show target section
+        targetSection.classList.add('active');
+        targetSection.style.display = 'block';
+
+        // 4. Reset scroll to top
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
+        // 5. Fix: Force Shuffle layout update when switching to Portfolio section
+        if (targetId === '#my_work' && typeof shuffleInstance !== 'undefined') {
+            // Wait for display:block to take effect so DOM can calculate sizes
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    shuffleInstance.update();
+                    shuffleInstance.layout();
+                }, 50);
+            });
+        }
+    });
+});
 
 document.querySelector('#sidebar .toggle-sidebar').addEventListener('click', function () {
-    document.querySelector('#sidebar').classList.toggle('open')
-})
+    document.querySelector('#sidebar').classList.toggle('open');
+});
 
 var options = {
-    strings: ['Ingeniero de Machine Learning', 'Científico de Datos', 'Especialista en IA'],
+    strings: ['Machine Learning Engineer', 'Data Scientist', 'AI Specialist'],
     loop: true,
     typeSpeed: 80,
     backSpeed: 10
 };
 
-new Typed('.field h2', options)
-
-for (let i = 1; i <= 15; i++) {
-    let meteor = document.createElement('span');
-    meteor.classList = 'meteor'
-    document.querySelector('#home .meteor-shower').append(meteor);
-}
-
+new Typed('.field h2', options);
 
 const shuffleInstance = new Shuffle(document.querySelector('#my_work .work-items'), {
-    itemSelector: '.item'
+    itemSelector: '.item',
 });
 
-const filterButtons = document.querySelectorAll('#my_work .filters button')
+const filterButtons = document.querySelectorAll('#my_work .filters button');
 filterButtons.forEach((item) => {
-    item.addEventListener('click', workFilter)
+    item.addEventListener('click', workFilter);
 });
 
-function workFilter() {
+function workFilter(event) {
     const clickedButton = event.currentTarget;
     const clickedButtonGroup = clickedButton.getAttribute('data-group');
     const activeButton = document.querySelector('#my_work .filters button.active');
 
-    activeButton.classList.remove('active');
+    if (activeButton) activeButton.classList.remove('active');
     clickedButton.classList.add("active");
 
-    shuffleInstance.filter(clickedButtonGroup)
+    shuffleInstance.filter(clickedButtonGroup);
 }
 
-var workModal = new bootstrap.Modal(document.getElementById('workModal'))
+var workModal = new bootstrap.Modal(document.getElementById('workModal'));
 const workElements = document.querySelectorAll("#my_work .work-items .wrap");
 
 workElements.forEach((item) => {
     item.addEventListener('click', function () {
-        document.querySelector('#workModal .modal-body img').setAttribute('src', item.getAttribute('data-image'))
-        document.querySelector('#workModal .modal-body .title').innerText = item.getAttribute('data-title')
-        document.querySelector('#workModal .modal-body .description').innerText = item.getAttribute('data-description')
-        document.querySelector('#workModal .modal-body .type .value').innerText = item.getAttribute('data-type')
-        document.querySelector('#workModal .modal-body .completed .value').innerText = item.getAttribute('data-completed')
-        document.querySelector('#workModal .modal-body .skills .value').innerText = item.getAttribute('data-skills')
-        document.querySelector('#workModal .modal-body .project-link a').setAttribute('href', item.getAttribute('data-project-link'))
+        document.querySelector('#workModal .modal-body img').setAttribute('src', item.getAttribute('data-image'));
+        document.querySelector('#workModal .modal-body .title').innerText = item.getAttribute('data-title');
+        document.querySelector('#workModal .modal-body .description').innerText = item.getAttribute('data-description');
+        document.querySelector('#workModal .modal-body .type .value').innerText = item.getAttribute('data-type');
+        document.querySelector('#workModal .modal-body .completed .value').innerText = item.getAttribute('data-completed');
+        document.querySelector('#workModal .modal-body .skills .value').innerText = item.getAttribute('data-skills');
+        document.querySelector('#workModal .modal-body .project-link a').setAttribute('href', item.getAttribute('data-project-link'));
 
         workModal.show();
-    })
-})
+        // focus management: move focus to close button for accessibility
+        setTimeout(() => {
+            const closeBtn = document.querySelector("#workModal .modal-close-button");
+            if (closeBtn) closeBtn.focus();
+        }, 200);
+    });
+});
 
-var workModalElement = document.getElementById('workModal')
+var workModalElement = document.getElementById('workModal');
 workModalElement.addEventListener('show.bs.modal', function (event) {
     document.getElementById('my_work').classList.add('blur');
     document.getElementById('sidebar').classList.add('blur');
-})
+    // trap focus inside modal
+    document.addEventListener('focus', trapFocus, true);
+});
 
 workModalElement.addEventListener('hide.bs.modal', function (event) {
     document.getElementById('my_work').classList.remove('blur');
     document.getElementById('sidebar').classList.remove('blur');
-})
+    document.removeEventListener('focus', trapFocus, true);
+});
 
 let contactFromItems = document.querySelectorAll('#contact_me .form input, #contact_me .form textarea');
 
 contactFromItems.forEach((item) => {
     item.addEventListener('focus', function () {
-        item.parentElement.classList.add('focus')
-    })
+        item.parentElement.classList.add('focus');
+    });
 
     item.addEventListener('blur', function () {
         if (!item.value) {
-            item.parentElement.classList.remove('focus')
+            item.parentElement.classList.remove('focus');
         }
-    })
-})
+    });
+});
 
 function onSubmit(e) {
     e.preventDefault();
@@ -116,8 +147,8 @@ function onSubmit(e) {
                     console.log("Response data:", data);
                     document.querySelector('.form').innerHTML = `
                         <div class="text-center form-success">
-                            <h3>¡Gracias por tu mensaje!</h3>
-                            <p>Tu mensaje ha sido enviado exitosamente. Se te proporcionará una respuesta en breve.</p>
+                            <h3>Thank you for your message!</h3>
+                            <p>Your message has been sent successfully. A response will be provided shortly.</p>
                         </div>
                     `;
                 })
@@ -125,11 +156,19 @@ function onSubmit(e) {
                     console.error("Error:", error);
                     document.querySelector('.form').innerHTML = `
                         <div class="text-center form-error">
-                            <h3>¡Ocurrió un error!</h3>
-                            <p>Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente más tarde.</p>
+                            <h3>An error occurred!</h3>
+                            <p>There was an issue sending your message. Please try again later.</p>
                         </div>
                     `;
                 });
         });
     });
+}
+
+function trapFocus(e) {
+    const modal = document.getElementById('workModal');
+    if (!modal) return;
+    if (modal.contains(e.target)) return;
+    const focusable = modal.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+    if (focusable.length) { focusable[0].focus(); e.preventDefault(); }
 }
