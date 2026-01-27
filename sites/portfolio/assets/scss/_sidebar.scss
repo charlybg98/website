@@ -1,5 +1,5 @@
 #sidebar {
-    width: 102px;
+    width: 80px;
     height: 100vh;
     position: fixed;
     left: 0;
@@ -10,13 +10,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     .logo {
-        margin-bottom: 4rem;
+        margin-bottom: 3rem;
         img {
-            width: 45px;
+            width: 32px;
             filter: drop-shadow(0 0 10px rgba($primary, 0.3));
         }
     }
@@ -31,7 +31,7 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.25rem;
 
             li {
                 position: relative;
@@ -40,8 +40,8 @@
                 justify-content: center;
 
                 a {
-                    width: 50px;
-                    height: 50px;
+                    width: 44px;
+                    height: 44px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -147,7 +147,7 @@
 
 // Sidebar spacing for main content
 main {
-    padding-left: 102px;
+    padding-left: 80px;
     @media (max-width: 991px) {
         padding-left: 0;
     }
