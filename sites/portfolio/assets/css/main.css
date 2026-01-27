@@ -382,10 +382,12 @@ main {
   border-color: #10B981;
   box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
 }
-#home .info .socials ul li a:hover i {
+#home .info .socials ul li a:hover i,
+#home .info .socials ul li a:hover svg {
   color: #fff;
 }
-#home .info .socials ul li a i {
+#home .info .socials ul li a i,
+#home .info .socials ul li a svg {
   font-size: 1.25rem;
   color: #F8FAFC;
   transition: all 0.3s;
@@ -434,9 +436,16 @@ main {
   border-radius: 30px;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
   transition: transform 0.5s ease;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 #about_me .hero .image img:hover {
   transform: scale(1.01);
+}
+#about_me .hero .info {
+  position: relative;
+  z-index: 2;
 }
 #about_me .hero .info h1 {
   margin-top: 1rem;
@@ -948,9 +957,33 @@ main {
   color: #10B981;
 }
 
+@media (min-width: 1920px) {
+  main > section .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 1400px) {
+  #about_me .hero .image img {
+    max-width: 350px;
+  }
+}
 @media (max-width: 1200px) {
   #home .info h1 {
     font-size: 3rem;
+  }
+  #about_me .hero .image {
+    order: 2;
+  }
+  #about_me .hero .image img {
+    max-width: 300px;
+    margin-top: 2rem;
+  }
+  #about_me .hero .info {
+    order: 1;
+  }
+  #about_me .languages-skills .languages-key-skills {
+    margin-bottom: 2rem;
   }
 }
 @media (max-width: 991px) {
@@ -1050,7 +1083,8 @@ main {
     flex-direction: column;
     width: 100%;
   }
-  #about_me .hero .info .buttons .btn-custom-blue, #about_me .hero .info .buttons #workModal .modal-body .container-fluid .right .project-link a, #workModal .modal-body .container-fluid .right .project-link #about_me .hero .info .buttons a, #about_me .hero .info .buttons .btn-custom-dark {
+  #about_me .hero .info .buttons .btn-custom-blue, #about_me .hero .info .buttons #workModal .modal-body .container-fluid .right .project-link a, #workModal .modal-body .container-fluid .right .project-link #about_me .hero .info .buttons a,
+  #about_me .hero .info .buttons .btn-custom-dark {
     width: 100%;
   }
 }

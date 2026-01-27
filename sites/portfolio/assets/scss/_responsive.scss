@@ -1,7 +1,54 @@
+// Ultra-wide screens - ensure content stays centered
+@media (min-width: 1920px) {
+    main>section {
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+    }
+}
+
+// Large desktops
+@media (max-width: 1400px) {
+    #about_me {
+        .hero {
+            .image img {
+                max-width: 350px;
+            }
+        }
+    }
+}
+
+// Medium desktops - fix About Me overlap
 @media (max-width: 1200px) {
     #home {
         .info {
-            h1 { font-size: 3rem; }
+            h1 {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    #about_me {
+        .hero {
+            .image {
+                order: 2; // Move image below on medium screens
+
+                img {
+                    max-width: 300px;
+                    margin-top: 2rem;
+                }
+            }
+
+            .info {
+                order: 1;
+            }
+        }
+
+        .languages-skills {
+            .languages-key-skills {
+                margin-bottom: 2rem;
+            }
         }
     }
 }
@@ -22,24 +69,37 @@
         background: rgba(color.adjust($dark_bg, $lightness: 3%), 0.95);
         backdrop-filter: blur(10px);
 
-        .logo { display: none; }
-        .language-switch { display: none; }
-        
+        .logo {
+            display: none;
+        }
+
+        .language-switch {
+            display: none;
+        }
+
         nav {
             height: 100%;
+
             ul {
                 flex-direction: row;
                 height: 100%;
                 gap: 0;
                 justify-content: space-around;
+
                 li {
                     height: 100%;
+
                     a {
                         height: 100%;
                         border-radius: 0;
                         width: 60px;
                     }
-                    > span { display: none; } // Hide tooltips on mobile
+
+                    >span {
+                        display: none;
+                    }
+
+                    // Hide tooltips on mobile
                 }
             }
         }
@@ -49,7 +109,7 @@
         padding-left: 0;
         padding-bottom: 80px; // Space for bottom bar
 
-        > section {
+        >section {
             padding-left: 20px;
             padding-right: 20px;
         }
@@ -57,14 +117,22 @@
 
     #home {
         text-align: center;
+
         .info {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding-top: 2rem;
-            h1 { font-size: 2.5rem; }
-            p { margin: 0 auto 2rem; }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            p {
+                margin: 0 auto 2rem;
+            }
         }
+
         .image {
             display: none; // Better ux for mobile hero
         }
@@ -74,30 +142,44 @@
         .hero {
             flex-direction: column;
             text-align: center;
+
             .info .buttons {
                 justify-content: center;
             }
+
             .info .items .item {
                 justify-content: center;
             }
         }
+
         .languages-skills .custom h2 {
             text-align: center;
-            &:after { left: 50%; transform: translateX(-50%); }
+
+            &:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
         }
     }
 }
 
 @media (max-width: 576px) {
     #home {
-        h1 { font-size: 2rem; }
-        .field h2 { font-size: 1.2rem; }
+        h1 {
+            font-size: 2rem;
+        }
+
+        .field h2 {
+            font-size: 1.2rem;
+        }
     }
-    
+
     #about_me .hero .info .buttons {
         flex-direction: column;
         width: 100%;
-        .btn-custom-blue, .btn-custom-dark {
+
+        .btn-custom-blue,
+        .btn-custom-dark {
             width: 100%;
         }
     }

@@ -12,7 +12,10 @@
                 border-radius: 30px;
                 box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
                 transition: transform 0.5s ease;
-                
+                max-width: 100%;
+                height: auto;
+                object-fit: cover;
+
                 &:hover {
                     transform: scale(1.01);
                 }
@@ -20,6 +23,9 @@
         }
 
         .info {
+            position: relative;
+            z-index: 2; // Ensure text content stays on top
+
             h1 {
                 margin-top: 1rem;
                 margin-bottom: 0.5rem;
@@ -185,7 +191,7 @@
 
         .item {
             transition: all 0.3s ease;
-            
+
             img {
                 width: 100%;
                 max-width: 250px;
@@ -196,9 +202,10 @@
 
             &:hover {
                 transform: scale(1.05);
+
                 img {
                     filter: brightness(1.1);
-                    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+                    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
                 }
             }
         }
